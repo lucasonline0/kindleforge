@@ -1,0 +1,2 @@
+import { z } from 'zod';
+export const importPaths=z.array(z.string().min(1).max(4096)).min(1).max(30); export const editBook=z.object({id:z.string().uuid(),title:z.string().min(1).max(300),author:z.string().min(1).max(200),year:z.number().int().min(1000).max(2100).optional(),language:z.string().max(32).optional(),isbn:z.string().max(32).optional(),publisher:z.string().max(200).optional(),description:z.string().max(10000).optional()});

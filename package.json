@@ -1,0 +1,44 @@
+{
+  "name": "kindleforge",
+  "version": "1.0.0",
+  "description": "A refined local library for Kindle-ready books.",
+  "main": "dist/main/index.js",
+  "author": "Lucas Online",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"tsc -p tsconfig.main.json --watch\" \"wait-on tcp:5173 dist/main/index.js && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "build": "npm run typecheck && vite build && tsc -p tsconfig.main.json && electron-builder --linux AppImage pacman deb rpm",
+    "package:dir": "vite build && tsc -p tsconfig.main.json && electron-builder --linux --dir",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.main.json --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "checksums": "sha256sum release/* > release/SHA256SUMS"
+  },
+  "build": {
+    "appId": "com.lucasonline.kindleforge",
+    "productName": "KindleForge",
+    "asar": true,
+    "files": ["dist/**/*", "package.json"],
+    "linux": { "category": "Office", "target": ["AppImage", "pacman", "deb", "rpm"], "executableName": "kindleforge", "maintainer": "Lucas Online", "synopsis": "Prepare PDF books for Kindle", "description": "A local desktop library for converting PDF books to EPUB and AZW3." },
+    "pacman": { "packageCategory": "office", "depends": ["calibre", "poppler"] }
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8",
+    "wait-on": "^8.0.1"
+  },
+  "dependencies": { "better-sqlite3": "^11.7.0", "pdf-parse": "^1.1.1", "zod": "^3.24.1" }
+}

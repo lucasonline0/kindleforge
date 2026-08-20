@@ -1,0 +1,3 @@
+import { promises as fs } from 'node:fs'; import path from 'node:path'; import { safeChild } from '../../security/paths';
+export async function cacheCover(url:string|undefined,coversDir:string,id:string){if(!url)return;try{const c=new AbortController();const t=setTimeout(()=>c.abort(),8000);const r=await fetch(url,{signal:c.signal});clearTimeout(t);if(!r.ok)return;const bytes=Buffer.from(await r.arrayBuffer());if(bytes.length<1000)return;const file=safeChild(coversDir,`${id}.jpg`);await fs.mkdir(path.dirname(file),{recursive:true});await fs.writeFile(file,bytes);return file;}catch{return undefined;}}
+export const fallbackCover=(cover?:string)=>cover;
