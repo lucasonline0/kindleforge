@@ -1,6 +1,6 @@
 {
   "name": "kindleforge",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A refined local library for Kindle-ready books.",
   "main": "dist/main/main/index.js",
   "author": "Lucas Online",
@@ -19,7 +19,7 @@
     "appId": "com.lucasonline.kindleforge",
     "productName": "KindleForge",
     "asar": true,
-    "files": ["dist/**/*", "package.json"],
+    "files": ["dist/main/**/*", "dist/renderer/**/*", "package.json"],
     "linux": { "category": "Office", "target": ["AppImage", "pacman", "deb", "rpm"], "executableName": "kindleforge", "maintainer": "Lucas Online", "synopsis": "Prepare PDF books for Kindle", "description": "A local desktop library for converting PDF books to EPUB and AZW3." },
     "pacman": { "packageCategory": "office", "depends": ["calibre", "poppler"] }
   },
