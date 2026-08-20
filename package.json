@@ -1,6 +1,6 @@
 {
   "name": "kindleforge",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A refined local library for Kindle-ready books.",
   "main": "dist/main/main/index.js",
   "author": "Lucas Online",
