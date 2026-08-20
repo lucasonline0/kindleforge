@@ -2,7 +2,7 @@
   "name": "kindleforge",
   "version": "1.0.0",
   "description": "A refined local library for Kindle-ready books.",
-  "main": "dist/main/index.js",
+  "main": "dist/main/main/index.js",
   "author": "Lucas Online",
   "license": "MIT",
   "scripts": {
