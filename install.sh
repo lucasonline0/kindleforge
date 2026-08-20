@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-repo="lucasonline0/KindleForge"; arch="$(uname -m)"; [ "$arch" = x86_64 ] || { echo "KindleForge currently ships x64 Linux builds only." >&2; exit 1; }
+repo="lucasonline0/kindleforge"; arch="$(uname -m)"; [ "$arch" = x86_64 ] || { echo "KindleForge currently ships x64 Linux builds only." >&2; exit 1; }
 tmp="$(mktemp -d)"; trap 'rm -rf "$tmp"' EXIT
 api="https://api.github.com/repos/$repo/releases/latest"
 json="$(curl -fsSL "$api")" || { echo "Could not read the latest release. For a private repository use: gh release download --repo $repo" >&2; exit 1; }
